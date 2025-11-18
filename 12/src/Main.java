@@ -1,15 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.io.*;
+
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        try (FileInputStream in = new FileInputStream("input.txt");
+             FileOutputStream out = new FileOutputStream("output.txt")) {
+            byte[] buffer = new byte[in.available()];
+            in.read(buffer, 0, buffer.length);
+            out.write(buffer, 0, buffer.length);
+        } catch (FileNotFoundException e) {
+            if (e.getMessage().contains("input.txt")) {
+                System.out.println("input file not found" + e.getMessage());
+            } else if (e.getMessage().contains("output.txt")) {
+                System.out.println("output file not found");
+            } else {
+                System.out.println(e.getMessage());
+            }
+        } catch (IOException e) {
+            System.out.println("no write-permission for the output file" + e.getMessage());
         }
     }
 }

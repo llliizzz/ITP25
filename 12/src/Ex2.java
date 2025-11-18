@@ -1,7 +1,7 @@
 import java.io.*;
 
 
-public class Main {
+public class Ex2 {
     public static void main(String[] args) {
         try (FileInputStream in = new FileInputStream("12/input.txt");
              FileOutputStream out = new FileOutputStream("output.txt")) {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Ex3 {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(new File("12/input.txt"))) {
+        try (Scanner scanner = new Scanner(new File("input.txt"))) {
 
             int num1 = scanner.nextInt();
             int num2 = scanner.nextInt();

@@ -3,14 +3,14 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        try (FileInputStream in = new FileInputStream("input.txt");
+        try (FileInputStream in = new FileInputStream("12/input.txt");
              FileOutputStream out = new FileOutputStream("output.txt")) {
             byte[] buffer = new byte[in.available()];
             in.read(buffer, 0, buffer.length);
             out.write(buffer, 0, buffer.length);
         } catch (FileNotFoundException e) {
             if (e.getMessage().contains("input.txt")) {
-                System.out.println("input file not found" + e.getMessage());
+                System.out.println("input file not found, " + e.getMessage());
             } else if (e.getMessage().contains("output.txt")) {
                 System.out.println("output file not found");
             } else {
